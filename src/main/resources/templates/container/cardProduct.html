@@ -1,0 +1,46 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="cardProductInit" th:each="orderV:${session.order}">
+
+<div class="card card-body mt-3">
+    <div class="media align-items-center align-items-lg-start text-center text-lg-left flex-column flex-lg-row">
+        <div class="mr-2 mb-3 mb-lg-0">
+            <img src="https://i.imgur.com/5Aqgz7o.jpg" width="100" height="100" alt="">
+        </div>
+
+        <div class="media-body">
+            <h6 class="media-title font-weight-semibold">
+                <a href="#" data-abc="true" th:text="${orderV.orderUuid}"></a>
+            </h6>
+
+            <ul class="list-inline list-inline-dotted mb-0">
+                <li class="list-inline-item">Name Shop <a href="#" data-abc="true">Mobile point_Ten Shop</a></li>
+            </ul>
+
+            <p class="mb-3">Variation: {Phan Loai}</p>
+
+        </div>
+
+        <div class="mt-5 mt-lg-0 ml-lg-3 text-center">
+            <div class="text-muted">
+                <span style="text-decoration: line-through">$700</span>
+                <span class="font-weight-semibold">$500</span>
+            </div>
+
+            <div>
+                <span class="h6">Order Total: </span>
+                <span class="h4 mb-0 font-weight-semibold">$459.99 </span>
+            </div>
+
+            <button th:if="${state} == 'To Pay'" type="button" class="btn btn-warning mt-3 text-white">Payment</button>
+            <button th:if="${state} == 'To Ship' or ${state} == 'To Receive'" type="button" class="btn btn-warning mt-3 text-white">Order Tracking</button>
+            <button th:if="${state} == 'To Receive'" type="button" class="btn btn-warning mt-3 text-white">Return</button>
+            <button th:if="${state} == 'Complete' or ${state} == 'Cancel' or ${state} == 'Return'" type="button" class="btn btn-warning mt-3 text-white">Buy Again</button>
+            <button th:if="${state} == 'To Receive'" type="button" class="btn btn-warning mt-3 text-white">Confirm Order</button>
+            <button th:if="${state} == 'To Pay' or ${state} == 'To Commit' or ${state} == 'To Confirm'" type="button" class="btn btn-warning mt-3 text-white">Cancel</button>
+            <button th:if="${state} == 'Cancel'" type="button" class="btn btn-warning mt-3 text-white">Detail Order Cancel</button>
+
+        </div>
+    </div>
+</div>
+</div>
+</html>

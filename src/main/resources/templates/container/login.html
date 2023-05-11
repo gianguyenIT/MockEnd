@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Insert title here</title>
+    <!--    Font Awesome-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <!--    Libraries Stylesheet-->
+    <link rel="stylesheet" th:href="@{../static/lib/owlcarousel/assets/owl.carousel.min.css}">
+    <!--    Customized Bootstrap Stylesheet-->
+    <link rel="stylesheet" th:href="@{../static/css/style.css}">
+</head>
+<body>
+
+    <div class="row align-items-center py-3 px-xl-5">
+        <div class="col-lg-3 d-none d-lg-block">
+            <a th:href="@{/home}" class="text-decoration-none">
+                <h1 class="m-0 display-5 font-weight-semi-bold"><span
+                        class="text-primary font-weight-bold border px-3 mr-1">BE</span>Shopper</h1>
+            </a>
+        </div>
+    </div>
+    <div class="container p-5">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card">
+                    <div class="card-header text-center fs-4">Login Page</div>
+
+                    <div th:if="${param.error}" class="alert alert-danger">
+                        Invalid username & Password</div>
+
+                    <div th:if="${param.logout}" class="alert alert-success">
+                        Logout Sucessfully</div>
+
+                    <div class="card-body">
+                        <form action="/login" method="post">
+
+                            <div class="mb-3">
+                                <label>Enter Email</label> <input type="text" name="username"
+                                                                  class="form-control">
+                            </div>
+
+
+                            <div class="mb-3">
+                                <label>Enter Password</label> <input type="text"
+                                                                     name="password" class="form-control">
+                            </div>
+                            <button class="btn btn-primary col-md-12">Login</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- Footer Start -->
+    <div th:replace="component/footer :: footerInit"></div>
+    <!-- Footer End -->
+
+
+</body>
+</html>

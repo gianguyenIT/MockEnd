@@ -1,0 +1,105 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="contentInit">
+    <!-- Profile Start -->
+    <form action="#" method="POST">
+        <div class="container-fluid pt-5">
+            <div class="row px-xl-5 pb-3">
+
+                <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+                    <div class="">
+                        <div>
+                            <img style="height:40px;margin-right:1.5em" class="rounded-circle"/>
+                            <h6>User Name</h6>
+                        </div>
+                        <a th:href="@{/profile}" style="text-decoration:none">My profile</a> <br>
+                        <a th:href="@{/purchase}" style="text-decoration:none">My purchase</a>
+                    </div>
+                </div>
+                <div class="col-lg-9 card bg-secondary">
+                    <form th:action="@{/customer-update/{id} (id=${customer.id})}" th:object="${customer}" method="post">
+                        <div class="card-body">
+                            <div class="">
+                                <h3> Manage and protect your account</h3>
+                                <hr>
+                            </div>
+                            <div class="row px-xl-5 pb-3">
+                                <div class="col-lg-8 col-md-6 col-sm-12 pb-1">
+                                    <div>
+                                        <input type="hidden" name="id" th:field="*{id}">
+                                        <input type="hidden" name="imageUrl" ;>
+                                    </div>
+                                    <div class="control-group">
+                                        <label for="name"> First Name:</label>
+                                        <input type="text" class="form-control" id="name"
+                                               required="required"
+                                               th:field="*{firstName}"
+                                               data-validation-required-message="Please enter your name"/>
+                                        <p class="help-block text-danger"></p>
+                                    </div>
+                                    <div class="control-group">
+                                        <label> Last Name</label>
+                                        <input type="text" class="form-control" id="lastname"
+                                               required="required"
+                                               th:field="*{lastName}"
+                                               data-validation-required-message="Please enter your name"/>
+                                        <p class="help-block text-danger"></p>
+                                    </div>
+                                    <label> Your email</label>
+                                    <div class="control-group">
+                                        <input type="email" class="form-control" id="email"
+                                               required="required"
+                                               th:field="*{email}"
+                                               data-validation-required-message="Please enter your email"/>
+                                        <p class="help-block text-danger"></p>
+                                    </div>
+                                    <div class="control-group">
+                                        <label> Phone number</label>
+                                        <input type="text" class="form-control"
+                                               th:field="*{phoneNumber}"
+                                               id="phoneNumber"/>
+                                        <p class="help-block text-danger"></p>
+                                    </div>
+                                    <div class="control-group">
+                                        <label> Your Address</label>
+                                        <input type="text" class="form-control" id="address"
+                                               required="required"
+                                               th:field="*{addressId}"
+                                               data-validation-required-message="Please enter a subject"/>
+                                        <p class="help-block text-danger"></p>
+                                    </div>
+                                    <div>
+                                        <button style="margin-left:18rem" class="btn btn-primary py-2 px-4"
+                                                type="submit"
+                                                id="sendMessageButton"> Save
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
+                                    <div style="margin: 7rem 0 0 3rem">
+                                        <img style="height:150px;" class="rounded-circle"/>
+                                        <!-- <td><button class="btn btn-primary py-2 px-4" type="file" style="margin-top: 1.5rem;"> Select Image </button></td>-->
+                                        <form method="post">
+
+                                            <input type="file" name="file"
+                                                   class="form-control-file btn btn-primary py-2 px-4"
+                                                   style="margin-top: 1.5rem;">
+
+                                        </form>
+
+                                        <div style="margin:0 0 0 1rem;display:block;">
+                                            <div style="color:#999;font-size:0.7rem;line-height:1.25rem;">
+                                                File size: maximum 1 MB <br>
+                                                File extension: .JPEG, .PNG
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+</html>

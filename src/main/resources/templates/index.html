@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="component/header :: headInit"></head>
+<body>
+
+<!-- Topbar Start -->
+<div th:replace="component/topbar :: topbarInit"></div>
+<!-- Topbar End -->
+
+
+<!-- Navbar Start -->
+<div th:replace="component/navbar :: navbarStart"></div>
+<!-- Navbar End -->
+
+<!-- Page Header Start -->
+<div th:if="${direction} != 'container/home'">
+    <div th:replace="component/header :: pageHeader"></div>
+</div>
+    <!-- Page Header End -->
+
+<!--    Container Start -->
+<div th:replace="${direction} :: contentInit"></div>
+<!--    Container End -->
+
+<!-- Footer Start -->
+<div th:replace="component/footer :: footerInit"></div>
+<!-- Footer End -->
+
+
+<!-- Back to Top -->
+<a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+<div th:replace="component/script :: scriptInit"></div>
+</body>
+</html>
