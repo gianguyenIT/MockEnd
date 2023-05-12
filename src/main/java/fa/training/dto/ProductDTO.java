@@ -19,26 +19,21 @@ public class ProductDTO {
 
     private String productImage;
 
-    
     private String productName;
 
-    
     private String productCode;
 
-   private String description;
+    private String description;
 
-   private Double price;
+    private Double price;
 
-    
     private String brand;
 
-    
     private String color;
 
-    
     private String size;
 
-   private Integer importQuantity;
+    private Integer importQuantity;
 
     private CategoryDTO category;
 

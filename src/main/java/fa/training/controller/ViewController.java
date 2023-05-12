@@ -3,8 +3,10 @@ package fa.training.controller;
 import fa.training.dto.CustomerDTO;
 import fa.training.entity.Customer;
 import fa.training.repository.CustomerRepository;
+import fa.training.service.CategoryService;
 import fa.training.service.CustomerService;
 import fa.training.service.OrderService;
+import fa.training.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,10 +20,12 @@ public class ViewController {
 
     @Autowired
     CustomerService customerService;
-
+    @Autowired
+    CategoryService categoryService;
     @Autowired
     OrderService orderService;
-
+    @Autowired
+    ProductService productService;
     @Autowired
     private CustomerRepository repository;
 
@@ -47,17 +51,13 @@ public class ViewController {
         return "index";
     }
 
-    @GetMapping(value ="/product")
-    public String product(Model model) {
-        model.addAttribute("home", Boolean.FALSE);
-        model.addAttribute("shop", Boolean.FALSE);
-        model.addAttribute("product", Boolean.TRUE); // Active Product Nav Bar
-        model.addAttribute("contact", Boolean.FALSE);
-        model.addAttribute("pageTitle", "Product");
-        model.addAttribute("direction", "container/product");
+    @GetMapping("/productDetail/{id}")
+    public String productDetail (Model model, @PathVariable("id") Long productId){
+        model.addAttribute("ProductById", productService.getProductById(productId));
+        model.addAttribute("pageTitle", "Product Detail");
+        model.addAttribute("direction", "container/productDetail");
         return "index";
     }
-
 
     @GetMapping(value = "/cart")
     public String cart(Model model) {
@@ -147,4 +147,23 @@ public class ViewController {
 //        service.update(customer);
         return "redirect:/profile";
     }
+
+    @GetMapping("/showCategories")
+    public String showAllCategories(Model model, HttpSession session) {
+        session.setAttribute("category", categoryService.findAll()) ;
+        model.addAttribute("pageTitle", "Home");
+        model.addAttribute("direction", "container/home");
+        return "index";
+    }
+
+    @GetMapping("/find-by-category/{id}")
+    public String getProductByCate(Model model, @PathVariable("id") Long categoryId) {
+        model.addAttribute("listProduct", productService.getProductByCategory(categoryId));
+        System.out.println( productService.getProductByCategory(categoryId));
+        model.addAttribute("pageTitle", "Category");
+        model.addAttribute("direction", "container/productCategories");
+        return "index";
+    }
+
+
 }
