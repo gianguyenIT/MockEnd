@@ -67,7 +67,10 @@ public class ViewController {
     }
 
     @GetMapping(value ="/checkout")
-    public String checkOut(Model model) {
+    public String checkOut(Model model, Principal principal) {
+        String email = principal.getName();
+        Customer customer = repository.findByEmail(email);
+        model.addAttribute("customer", customer);
         model.addAttribute("pageTitle", "Check Out");
         model.addAttribute("direction", "container/checkout");
         return "index";
@@ -88,6 +91,7 @@ public class ViewController {
     public String profile(Model model, Principal principal) {
         String email = principal.getName();
         Customer customer = repository.findByEmail(email);
+
         model.addAttribute("customer", customer);
         model.addAttribute("pageTitle", "Profile");
         model.addAttribute("direction", "container/profile");

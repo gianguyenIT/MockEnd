@@ -13,10 +13,14 @@
     <!--    Template Javascript-->
     <script th:src="@{../static/js/main.js}"></script>
 
-    <!--    Cart Js-->
-    <script th:if="${direction} == 'container/cart'" th:src="@{../static/js/cart.js}"></script>
-
     <!--    Category Js-->
     <script th:src="@{../static/js/category.js}"></script>
+
+    <!--    Cart Js-->
+    <script th:if="${direction} == 'container/cart'" th:src="@{../../static/custom/js/cartCustom.js}"></script>
+    <script th:if="${direction} == 'container/cart'" th:src="@{../../static/custom/js/updateCartCustom.js}"></script>
+    <script th:src="@{../../static/custom/js/addToCartCustom.js}"></script>
+    <script th:if="${direction} == 'container/shop'" th:src="@{../../static/custom/js/shopCustom.js}"></script>
+    <script th:if="${direction} == 'container/checkout'" th:src="@{../../static/custom/js/checkOutCustom.js}"></script>
 </div>
 </html>

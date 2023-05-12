@@ -16,6 +16,7 @@
                     </div>
                 </div>
                 <div class="col-lg-9 card bg-secondary">
+<!--                    <div th:if="${customer}"></div>-->
                     <form th:action="@{/customer-update/{id} (id=${customer.id})}" th:object="${customer}" method="post">
                         <div class="card-body">
                             <div class="">
